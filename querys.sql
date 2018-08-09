@@ -68,3 +68,28 @@ AND fecha.responsable_idresponsable = responsable.idresponsable
 AND contacto.cliente_idcliente = cliente.idcliente 
 AND fecha.oferta - curdate() > -1
 order by proyecto.idproyecto
+
+
+/******************funciona**********************/
+SELECT fecha.registro as registro ,
+        cliente.nombre as cliente ,
+        responsable.iniciales as iniciales,
+        proyecto.oportunidad as oportunidad ,
+        contacto.nombre as cnombre ,
+        contacto.apellido as capellido ,
+        fecha.aceptacion as aceptacion ,
+        fecha.visita as visita ,
+        fecha.consultas as consultas ,
+        fecha.respuestas as respuestas ,
+        fecha.oferta as oferta ,
+        fecha.decision as decision ,
+        proyecto.enviado as enviado ,
+        proyecto.cotizacion as cotizacion ,
+        concat(fecha.oferta - curdate(), ' dias restantes') as estado,
+        proyecto.comentario as comentario
+FROM fecha, cliente, responsable, proyecto, contacto
+WHERE fecha.proyecto_idproyecto = proyecto.idproyecto 
+AND fecha.contacto_idcontacto = contacto.idcontacto
+AND fecha.responsable_idresponsable = responsable.idresponsable 
+AND contacto.cliente_idcliente = cliente.idcliente 
+ORDER BY proyecto.idproyecto
