@@ -103,7 +103,7 @@ while ($columna = mysqli_fetch_array( $resultado ))
     <div class="card">
         <div class="card-header h4">
             <a class="navbar-brand" disabled><?php echo $cliente." - ".$oportunidad ?></a>
-            <a class="btn btn-primary text-light float-right" href="http://localhost:8080/FTMetrics/CSI-clients/tarjeta.php?$1=1">modificar</a>
+            <a class="btn btn-primary text-light float-right" href="http://localhost:8080/FTMetrics/CSI-clients/tarjeta.php?variable=hola">modificar</a>
         </div>
         <div class="card-body">
             <div class="form-row">
