@@ -48,7 +48,8 @@ require("conexion.php"); // incluye la variable de la conexion a la base de dato
 
 require("conexion.php"); // incluye la variable de la conexion a la base de datos
 
-$consulta = "SELECT fecha.registro as registro ,
+$consulta = "SELECT proyecto.idproyecto as idproyecto,
+                fecha.registro as registro ,
                 cliente.nombre as cliente ,
                 responsable.nombre as rnombre ,
                 responsable.apellido as rapellido ,
@@ -63,6 +64,7 @@ $consulta = "SELECT fecha.registro as registro ,
                 fecha.decision as decision ,
                 proyecto.enviado as enviado ,
                 proyecto.cotizacion as cotizacion ,
+                proyecto.monto as monto ,
                 concat(fecha.oferta - curdate(), ' dias restantes') as estado,
                 proyecto.comentario as comentario
             FROM fecha, cliente, responsable, proyecto, contacto
@@ -82,6 +84,7 @@ $resultado = mysqli_query( $conexion, $consulta )
 while ($columna = mysqli_fetch_array( $resultado ))
 {
 
+    $idproyecto = $columna['idproyecto'];
     $registro = $columna['registro'];
     $cliente = $columna['cliente'];
     $rnombre = $columna['rnombre'];
@@ -97,23 +100,24 @@ while ($columna = mysqli_fetch_array( $resultado ))
     $decision = $columna['decision'];
     $enviado = $columna['enviado'];
     $cotizacion = $columna['cotizacion'];
+    $monto = $columna['monto'];
     $estado = $columna['estado'];
     $comentario = $columna['comentario'];
     ?>
     <div class="card">
         <div class="card-header h4">
             <a class="navbar-brand" disabled><?php echo $cliente." - ".$oportunidad ?></a>
-            <a class="btn btn-primary text-light float-right" href="http://localhost:8080/FTMetrics/CSI-clients/tarjeta.php?variable=hola">modificar</a>
+            <a class="btn btn-primary text-light float-right" href="<?php echo "http://localhost:8080/FTMetrics/CSI-clients/tarjeta.php?var=".$idproyecto ?>">modificar</a>
         </div>
         <div class="card-body">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputEmail4">Responsable</label>
-                    <input type="text" class="form-control" id="inputEmail4" value="<?php echo $rnombre ." ".$rapellido ?>" disabled>
+                    <input type="text" class="form-control" name="rnombre" id="rnombre" value="<?php echo $rnombre ." ".$rapellido ?>" disabled>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="inputPassword4">Contacto</label>
-                    <input type="text" class="form-control" id="inputPassword4" value="<?php echo $cnombre ." ".$capellido ?>" disabled>
+                    <input type="text" class="form-control" name="cnombre" id="cnombre" value="<?php echo $cnombre ." ".$capellido ?>" disabled>
                 </div>
             </div>
             <table class="table table-responsive-sm table-bordered">
@@ -141,15 +145,19 @@ while ($columna = mysqli_fetch_array( $resultado ))
                 </tbody>
             </table>
             <div class="form-row">
-                <div class="form-group col-md-4">
+                <div class="form-group col-md">
                     <label for="inputEmail4">Enviado</label>
                     <input type="text" class="form-control" id="inputEmail4" value="<?php echo $enviado ?>" disabled>
                 </div>
-                <div class="form-group col-md-4">
+                <div class="form-group col-md">
                     <label for="inputPassword4">Cotización</label>
                     <input type="text" class="form-control" id="inputPassword4" value="<?php echo $cotizacion ?>" disabled>
                 </div>
-                <div class="form-group col-md-4">
+                <div class="form-group col-md">
+                    <label for="inputPassword4">Monto</label>
+                    <input type="text" class="form-control" id="inputPassword4" value="<?php echo $monto ?>" disabled>
+                </div>
+                <div class="form-group col-md">
                     <label for="inputPassword4">Estado</label>
                     <input type="text" class="form-control" id="inputPassword4" value="<?php echo $estado ?>" disabled>
                 </div>
