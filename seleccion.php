@@ -1,7 +1,7 @@
 <?php
 
 require("conexion.php"); // incluye la variable de la conexion a la base de datos
-
+$hoy = date('Y-m-d');
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +39,7 @@ require("conexion.php"); // incluye la variable de la conexion a la base de dato
             </div>
         </li>
         </ul>
-        <span class="nav-item" style="padding: 10px;"><?php echo("Fecha actual: ".date('Y-m-d')); ?></span>
+        <span class="nav-item" style="padding: 10px;"><?php echo "Fecha actual: ".$hoy; ?></span>
     </div>
 
 </nav>
@@ -133,15 +133,15 @@ while ($columna = mysqli_fetch_array( $resultado ))
                     </tr>
                 </thead>
                 <tbody class="text-center">
-                    <tr>
-                        <td><?php echo $registro ?></td>
-                        <td><?php echo $aceptacion ?></td>
-                        <td><?php echo $visita ?></td>
-                        <td><?php echo $consultas ?></td>
-                        <td><?php echo $respuestas ?></td>
-                        <td><?php echo $oferta ?></td>
-                        <td><?php echo $decision ?></td>
-                    </tr>
+                    <tr><?php
+                    if($registro < $hoy && $registro != null ){echo "<td class='alert alert-danger'>".$registro."</td>";    }else{echo "<td>".$registro."</td>"; }
+                    if($aceptacion < $hoy && $aceptacion != null ){echo "<td class='alert alert-danger'>".$aceptacion."</td>";  }else{echo "<td>".$aceptacion."</td>";}
+                    if($visita < $hoy && $visita != null ){echo "<td class='alert alert-danger'>".$visita."</td>";      }else{echo "<td>".$visita."</td>";}
+                    if($consultas < $hoy && $consultas != null ){echo "<td class='alert alert-danger'>".$consultas."</td>";   }else{echo "<td>".$consultas."</td>";}   
+                    if($respuestas < $hoy && $respuestas != null ){echo "<td class='alert alert-danger'>".$respuestas."</td>";  }else{echo "<td>".$respuestas."</td>";}   
+                    if($oferta < $hoy && $oferta != null ){echo "<td class='alert alert-danger'>".$oferta."</td>";      }else{echo "<td>".$oferta."</td>";}   
+                    if($decision < $hoy && $decision != null ){echo "<td class='alert alert-danger'>".$decision."</td>";    }else{echo "<td>".$decision."</td>";}
+                    ?></tr>
                 </tbody>
             </table>
             <div class="form-row">
