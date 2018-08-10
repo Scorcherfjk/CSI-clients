@@ -5,17 +5,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
-
     <title><?php echo $_GET["var"] ?></title>
 </head>
 <body>
 <div class="container">
-
-<!--=======================================INICIO DE LA BARRA DE NAVEGACION=====================================-->
+<!--=======================================INICIO DE LA BARRA DE NAVEGACION==========================-->
     <nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
         <a class="navbar-brand" disabled>ControlSI</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,17 +37,21 @@
             <span class="nav-item" style="padding: 10px;"><?php echo("Fecha actual: ".date('Y-m-d')); ?></span>
         </div>
     </nav>
-<!--=======================================FINAL DE LA BARRA DE NAVEGACION=====================================-->
+<!--=======================================FINAL DE LA BARRA DE NAVEGACION===========================-->
+<!--=======================================LLAMADA A LAS DEPENDENCIAS================================-->
+    <?php
 
-<?php
+    require("conexion.php"); // incluye la variable de la conexion a la base de datos
+    $idproyecto = $_GET['var'];
 
-require("conexion.php"); // incluye la variable de la conexion a la base de datos
-$idproyecto = $_GET['var'];
-$consulta = "SELECT fecha.registro as registro ,
+//=========================================CONSULTA SQL PRINCIPAL====================================-->
+    $consulta = "SELECT fecha.registro as registro ,
                 cliente.nombre as cliente ,
+                responsable.idresponsable as idresponsable ,
                 responsable.nombre as rnombre ,
                 responsable.apellido as rapellido ,
                 proyecto.oportunidad as oportunidad ,
+                contacto.idcontacto as idcontacto ,
                 contacto.nombre as cnombre ,
                 contacto.apellido as capellido ,
                 fecha.aceptacion as aceptacion ,
@@ -72,16 +72,15 @@ $consulta = "SELECT fecha.registro as registro ,
             AND contacto.cliente_idcliente = cliente.idcliente
             AND proyecto.idproyecto = $idproyecto
             ORDER BY proyecto.idproyecto";
-$resultado = mysqli_query( $conexion, $consulta )
-    or die ( "Algo ha ido mal en la consulta a la base de datos");
-?>
-<br><br><br><br>
+    echo "<br><br><br><br>";
+    $resultado = mysqli_query( $conexion, $consulta )
+        or die ( "Algo ha ido mal en la consulta a la base de datos");
+    while ($columna = mysqli_fetch_array( $resultado ))
+    {
 
-
-<?php
-while ($columna = mysqli_fetch_array( $resultado ))
-{
-
+//=========================================ASIGNACION DE VARIABLES===================================-->
+    $idcontacto = $columna['idcontacto'];
+    $idresponsable = $columna['idresponsable'];
     $registro = $columna['registro'];
     $cliente = $columna['cliente'];
     $rnombre = $columna['rnombre'];
@@ -122,7 +121,11 @@ while ($columna = mysqli_fetch_array( $resultado ))
                             $resultado = mysqli_query( $conexion, $query )
                                 or die ( "Algo ha ido mal en la consulta a la base de datos");
                             while ($columna = mysqli_fetch_array( $resultado )){
-                                echo "<option value='".$columna['idresponsable']."'>".$columna['nombre'] ." ".$columna['apellido']."</option>";	
+                                if ($idresponsable == $columna['idresponsable'] ){
+                                    echo "<option value='".$columna['idresponsable']."' selected>".$columna['nombre'] ." ".$columna['apellido']."</option>";
+                                }else{
+                                    echo "<option value='".$columna['idresponsable']."'>".$columna['nombre'] ." ".$columna['apellido']."</option>";
+                                }
                             } 
                         ?>
                     </select>
@@ -137,7 +140,11 @@ while ($columna = mysqli_fetch_array( $resultado ))
                             $resultado = mysqli_query( $conexion, $query )
                                 or die ( "Algo ha ido mal en la consulta a la base de datos");
                             while ($columna = mysqli_fetch_array( $resultado )){
-                                echo "<option value='".$columna['idcontacto']."'>".$columna['nombre'] ." ".$columna['apellido']."</option>";	
+                                if ($idcontacto == $columna['idcontacto'] ){
+                                    echo "<option value='".$columna['idcontacto']."' selected>".$columna['nombre'] ." ".$columna['apellido']."</option>";
+                                }else{
+                                    echo "<option value='".$columna['idcontacto']."'>".$columna['nombre'] ." ".$columna['apellido']."</option>";
+                                }
                             } 
                         ?>
                     </select>
@@ -198,16 +205,8 @@ while ($columna = mysqli_fetch_array( $resultado ))
     </div>
     </form>
 <!--=======================================FINAL DEL FORMULARIO======================================-->
-    <br>
-    
-    
-    
-    <?php
-}
-
-mysqli_close( $conexion );
-?>
-
+<br> 
+<?php } mysqli_close( $conexion ); ?>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
