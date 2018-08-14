@@ -1,7 +1,7 @@
 <?php
 
 require("conexion.php"); // incluye la variable de la conexion a la base de datos
-
+$tabla = array();
 ?>
 
 <!DOCTYPE html>
@@ -11,6 +11,7 @@ require("conexion.php"); // incluye la variable de la conexion a la base de dato
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <style>
         tbody{
             font-size:0.8em;
@@ -101,8 +102,8 @@ $resultado = mysqli_query( $conexion, $consulta )
   <tbody>
 
 <?php
-while ($columna = mysqli_fetch_array( $resultado ))
-{
+while ($columna = mysqli_fetch_array( $resultado )) { $tabla[] = $columna; }
+foreach ($tabla as $columna) {
 
     $cliente = $columna['cliente'];
     $iniciales = $columna['iniciales'];
