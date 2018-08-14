@@ -28,11 +28,12 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Agregar
                     </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Cliente</a> 
-                    <a class="dropdown-item" href="#">Contacto</a>
-                    <a class="dropdown-item" href="#">Responsable</a>
-                </div>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="http://localhost:8080/FTMetrics/CSI-clients/add_client.php">Cliente</a> 
+                <a class="dropdown-item" href="http://localhost:8080/FTMetrics/CSI-clients/add_contact.php">Contacto</a>
+                <a class="dropdown-item" href="http://localhost:8080/FTMetrics/CSI-clients/add_proyect.php">Proyecto</a>
+                <a class="dropdown-item" href="http://localhost:8080/FTMetrics/CSI-clients/add_resp.php">Responsable</a>
+            </div>
             </li>
             </ul>
             <span class="nav-item" style="padding: 10px;"><?php echo("Fecha actual: ".date('Y-m-d')); ?></span>
