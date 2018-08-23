@@ -41,7 +41,7 @@ require("conexion.php"); // incluye la variable de la conexion a la base de dato
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="http://localhost:8080/FTMetrics/CSI-clients/add_client.html">Cliente</a>
-                            <a class="dropdown-item" href="http://localhost:8080/FTMetrics/CSI-clients/add_contact.html">Contacto</a>
+                            <a class="dropdown-item" href="http://localhost:8080/FTMetrics/CSI-clients/add_contact.php">Contacto</a>
                             <a class="dropdown-item" href="http://localhost:8080/FTMetrics/CSI-clients/add_proyect.php">Proyecto</a>
                             <a class="dropdown-item" href="http://localhost:8080/FTMetrics/CSI-clients/add_resp.html">Responsable</a>
                         </div>
@@ -52,7 +52,7 @@ require("conexion.php"); // incluye la variable de la conexion a la base de dato
         <!--=======================================FINAL DE LA BARRA DE NAVEGACION===========================-->
         <!--=======================================INICIO DEL FORMULARIO=====================================-->
         <br><br><br><br>
-        <form action="update.php" method="post">
+        <form action="./update/proyect.php" method="post">
             <div class="card">
                 <div class="card-header h4">
                     <a class="navbar-brand" disabled>Agregar nuevo proyecto</a>
