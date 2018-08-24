@@ -4,7 +4,7 @@ require("conexion.php"); // incluye la variable de la conexion a la base de dato
 
 $nombre = $_POST['name'];
 
-$option = "INSERT INTO cliente (idcliente, nombre) values('','$nombre')";
+$option = "INSERT INTO table ( n columns) values('n values')";
 $optionready = mysqli_query($conexion,$option);
 mysqli_commit($conexion);
 mysqli_free_result($optionready);
