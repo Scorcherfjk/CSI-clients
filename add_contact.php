@@ -61,11 +61,11 @@ require("conexion.php"); // incluye la variable de la conexion a la base de dato
                     <!--=======================================SELECCION DEL RESPONSABLE=================================-->
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <label for="idresponsable">Nombre</label>
+                            <label for="name">Nombre</label>
                             <input type="text" name="name" id="name" class="form-control" autocomplete="off">
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="idresponsable">Apellido</label>
+                            <label for="apellido">Apellido</label>
                             <input type="text" name="apellido" id="apellido" class="form-control" autocomplete="off">
                         </div>
                         <div class="form-group col-md-4">
@@ -77,7 +77,7 @@ require("conexion.php"); // incluye la variable de la conexion a la base de dato
                                     $optionready = mysqli_query($conexion,$option);
                                     mysqli_data_seek ($optionready, 0);
                                     while ($row = mysqli_fetch_array($optionready)){
-                                        echo "<option value='".$row['id']."'>".$row['nombre']."</option>";	
+                                        echo "<option value='".$row['idcliente']."'>".$row['nombre']."</option>";	
                                     }
                                     mysqli_free_result($optionready);
                                 ?>
@@ -86,15 +86,15 @@ require("conexion.php"); // incluye la variable de la conexion a la base de dato
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <label for="idresponsable">Email</label>
+                            <label for="email">Email</label>
                             <input type="email" name="email" id="email" class="form-control" autocomplete="off">
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="idresponsable">Telefono</label>
+                            <label for="tel">Telefono</label>
                             <input type="text" name="tel" id="tel" class="form-control" autocomplete="off">
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="idresponsable">celular</label>
+                            <label for="cel">celular</label>
                             <input type="text" name="cel" id="cel" class="form-control" autocomplete="off">
                         </div>
                     </div>

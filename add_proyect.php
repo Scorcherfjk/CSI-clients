@@ -107,7 +107,7 @@ require("conexion.php"); // incluye la variable de la conexion a la base de dato
                                         $optionready = mysqli_query($conexion,$option);
                                         mysqli_data_seek ($optionready, 0);
                                         while ($row = mysqli_fetch_array($optionready)){
-                                            echo "<option value='".$row['id']."'>".$row['nombre']." ".$row['apellido']."</option>";	
+                                            echo "<option value='".$row['idresponsable']."'>".$row['nombre']." ".$row['apellido']."</option>";	
                                         }
                                         mysqli_free_result($optionready);
                                     ?>
@@ -124,7 +124,7 @@ require("conexion.php"); // incluye la variable de la conexion a la base de dato
                                         $optionready = mysqli_query($conexion,$option);
                                         mysqli_data_seek ($optionready, 0);
                                         while ($row = mysqli_fetch_array($optionready)){
-                                            echo "<option value='".$row['id']."'>".$row['nombre']." ".$row['apellido']."</option>";	
+                                            echo "<option value='".$row['idcontacto']."'>".$row['nombre']." ".$row['apellido']."</option>";	
                                         }
                                         mysqli_free_result($optionready);
                                     ?>
