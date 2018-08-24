@@ -149,7 +149,7 @@ while ($columna = mysqli_fetch_array( $resultado ))
             <div class="form-row">
                 <div class="form-group col-md">
                     <label for="inputEmail4">Enviado</label>
-                    <input type="text" class="form-control" id="inputEmail4" value="<?php echo $enviado ?>" disabled>
+                    <input type="text" class="form-control" id="inputEmail4" value="<?php if ($enviado == 0){echo "NO";}else{echo "SI";} ?>" disabled>
                 </div>
                 <div class="form-group col-md">
                     <label for="inputPassword4">Cotización</label>
