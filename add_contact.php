@@ -4,7 +4,7 @@ require("conexion.php"); // incluye la variable de la conexion a la base de dato
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <!-- Required meta tags -->
@@ -61,16 +61,16 @@ require("conexion.php"); // incluye la variable de la conexion a la base de dato
                     <!--=======================================SELECCION DEL RESPONSABLE=================================-->
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <label for="name">Nombre</label>
-                            <input type="text" name="name" id="name" class="form-control" autocomplete="off">
+                            <label for="name">Nombre<span class="text-danger"> (*)</span></label>
+                            <input type="text" name="name" id="name" class="form-control" autocomplete="off" required>
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="apellido">Apellido</label>
-                            <input type="text" name="apellido" id="apellido" class="form-control" autocomplete="off">
+                            <label for="apellido">Apellido<span class="text-danger"> (*)</span></label>
+                            <input type="text" name="apellido" id="apellido" class="form-control" autocomplete="off" required>
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="cliente">Cliente</label>
-                            <select id="cliente" name="cliente" class="custom-select">
+                            <label for="cliente">Cliente<span class="text-danger"> (*)</span></label>
+                            <select id="cliente" name="cliente" class="custom-select" required>
                                 <?php
                                     //contruccion de las opciones
                                     $option = "SELECT idcliente, nombre FROM cliente";
@@ -86,16 +86,16 @@ require("conexion.php"); // incluye la variable de la conexion a la base de dato
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <label for="email">Email</label>
-                            <input type="email" name="email" id="email" class="form-control" autocomplete="off">
+                            <label for="email">Email<span class="text-danger"> (*)</span></label>
+                            <input type="email" name="email" id="email" class="form-control" autocomplete="off" required>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="tel">Telefono</label>
                             <input type="text" name="tel" id="tel" class="form-control" autocomplete="off">
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="cel">celular</label>
-                            <input type="text" name="cel" id="cel" class="form-control" autocomplete="off">
+                            <label for="cel">celular<span class="text-danger"> (*)</span></label>
+                            <input type="text" name="cel" id="cel" class="form-control" autocomplete="off" required>
                         </div>
                     </div>
                 </div>
