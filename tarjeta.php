@@ -14,7 +14,7 @@
 <div class="container">
 <!--=======================================INICIO DE LA BARRA DE NAVEGACION==========================-->
     <nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-        <a class="navbar-brand" disabled>ControlSI</a>
+        <a class="navbar-brand" href="http://localhost:8080/FTMetrics/CSI-clients/"><img src="./img/controlsi.png" alt="logo de ControlSI" style="width:110px; height:50px;"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -205,6 +205,7 @@
             </div>
         </div>
     </div>
+    <input type="hidden" name="idproyecto" value="<?php echo $idproyecto ?>">
     </form>
 <!--=======================================FINAL DEL FORMULARIO======================================-->
 <br> 
