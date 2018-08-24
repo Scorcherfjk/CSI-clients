@@ -5,7 +5,7 @@ require("conexion.php"); // incluye la variable de la conexion a la base de dato
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <!-- Required meta tags -->
@@ -62,22 +62,59 @@ require("conexion.php"); // incluye la variable de la conexion a la base de dato
                     <!--=======================================SELECCION DEL RESPONSABLE=================================-->
                     <div class="form-row">
                         <div class="form-group col">
-                            <label for="idresponsable">Nombre</label>
-                            <input type="text" name="name" id="name" class="form-control" autocomplete="off">
+                            <label for="name">Nombre<span class="text-danger"> (*)</span></label>
+                            <input type="text" name="name" id="name" class="form-control" autocomplete="off" required>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="responsable">Responsable<span class="text-danger"> (*)</span></label>
+                                <select id="responsable" name="responsable" class="form-control" required>
+                                    <?php
+                                        //contruccion de las opciones
+                                        $option = "SELECT idresponsable, nombre, apellido FROM responsable ";
+                                        $optionready = mysqli_query($conexion,$option);
+                                        mysqli_data_seek ($optionready, 0);
+                                        while ($row = mysqli_fetch_array($optionready)){
+                                            echo "<option value='".$row['idresponsable']."'>".$row['nombre']." ".$row['apellido']."</option>";	
+                                        }
+                                        mysqli_free_result($optionready);
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="contacto">Contacto<span class="text-danger"> (*)</span></label>
+                                <select id="contacto" name="contacto" class="form-control" required>
+                                    <?php
+                                        //contruccion de las opciones
+                                        $option = "SELECT idcontacto, nombre, apellido FROM contacto";
+                                        $optionready = mysqli_query($conexion,$option);
+                                        mysqli_data_seek ($optionready, 0);
+                                        while ($row = mysqli_fetch_array($optionready)){
+                                            echo "<option value='".$row['idcontacto']."'>".$row['nombre']." ".$row['apellido']."</option>";	
+                                        }
+                                        mysqli_free_result($optionready);
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="form-row">
                         <div class="table-responsive">
                             <table class="table table-bordered">
                                 <thead class="text-center thead-light">
                                     <tr>
                                         <th scope="col">Registro</th>
-                                        <th scope="col">Aceptacion</th>
+                                        <th scope="col">Aceptaci&oacuten</th>
                                         <th scope="col">Visita</th>
                                         <th scope="col">Consultas</th>
                                         <th scope="col">Respuestas</th>
                                         <th scope="col">Oferta</th>
-                                        <th scope="col">Decision</th>
+                                        <th scope="col">Decisi&oacuten</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-center">
@@ -94,44 +131,42 @@ require("conexion.php"); // incluye la variable de la conexion a la base de dato
                             </table>
                         </div>
                     </div>
-                    <!--=======================================FINAL DEL FORMULARIO======================================-->
                     <br>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col">
                             <div class="form-group">
-                                <label for="responsable">Responsable</label>
-                                <select id="responsable" name="responsable" class="custom-select">
-                                    <?php
-                                        //contruccion de las opciones
-                                        $option = "SELECT idresponsable, nombre, apellido FROM responsable ";
-                                        $optionready = mysqli_query($conexion,$option);
-                                        mysqli_data_seek ($optionready, 0);
-                                        while ($row = mysqli_fetch_array($optionready)){
-                                            echo "<option value='".$row['idresponsable']."'>".$row['nombre']." ".$row['apellido']."</option>";	
-                                        }
-                                        mysqli_free_result($optionready);
-                                    ?>
+                                <label for="cotizacion">Cotizaci&oacuten</label>
+                                <input id="cotizacion" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="monto">Monto</label>
+                                <input id="monto" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="enviado">Enviado</label>
+                                <select id="enviado" class="form-control">
+                                    <option value="0">NO</option>
+                                    <option value="1">SI</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col">
                             <div class="form-group">
-                                <label for="contacto">Contacto</label>
-                                <select id="contacto" name="contacto" class="custom-select">
-                                    <?php
-                                        //contruccion de las opciones
-                                        $option = "SELECT idcontacto, nombre, apellido FROM contacto";
-                                        $optionready = mysqli_query($conexion,$option);
-                                        mysqli_data_seek ($optionready, 0);
-                                        while ($row = mysqli_fetch_array($optionready)){
-                                            echo "<option value='".$row['idcontacto']."'>".$row['nombre']." ".$row['apellido']."</option>";	
-                                        }
-                                        mysqli_free_result($optionready);
-                                    ?>
-                                </select>
+                                <label for="estado">Estado</label>
+                                <input id="estado" class="form-control" type="text">
                             </div>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="comentario">Comentario</label>
+                        <textarea id="comentario" class="form-control" rows="3"></textarea>
+                    </div>
+                    <!--=======================================FINAL DEL FORMULARIO======================================-->
+                    <br>
                 </div>
             </div>
         </form>
