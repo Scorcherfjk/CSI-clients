@@ -1,5 +1,6 @@
 <?php
-
+print_r($_POST);
+/* */
 // incluye la variable de la conexion a la base de datos
 require("conexion.php"); 
 
@@ -24,6 +25,11 @@ $cotizacion = $_POST['cotizacion'];
 $monto = $_POST['monto'];
 $comentario = $_POST['comentario'];
 
+
+
+
+/**********************************************************************************/
+
 // Query
 $option = 
 "UPDATE 
@@ -34,7 +40,7 @@ SET
     enviado = '$enviado',
     cotizacion = '$cotizacion',
     monto = '$monto',
-    comnetario = '$comentario'
+    comentario = '$comentario'
 WHERE
     idproyecto = '$idproyecto'";
 
@@ -43,6 +49,8 @@ $optionready = mysqli_query($conexion,$option);
 mysqli_commit($conexion);
 mysqli_free_result($optionready);
 
+/**********************************************************************************/
+
 // Query2
 $option2 = 
 "UPDATE 
@@ -50,13 +58,13 @@ $option2 =
 SET 
     responsable_idresponsable = '$idresponsable',
     contacto_idcontacto = '$idcontacto',
-    registro = '$registro'
-    aceptacion = '$aceptacion
-    visita = '$visita'
-    consultas = '$consultas'
-    respuestas = '$respuestas'
-    oferta = '$oferta'
-    desicion = '$decision'
+    registro = '$registro',
+    aceptacion = '$aceptacion',
+    visita = '$visita',
+    consultas = '$consultas',
+    respuestas = '$respuestas',
+    oferta = '$oferta',
+    decision = '$decision'
 WHERE
     proyecto_idproyecto = '$idproyecto'";
 
@@ -64,6 +72,7 @@ WHERE
 $optionready2 = mysqli_query($conexion,$option2);
 mysqli_commit($conexion);
 mysqli_free_result($optionready2);
+
 mysqli_close($conexion);
-header("location:http://localhost:8080/FTMetrics/CSI-clients/add_proyect.php");
+header("location:http://localhost:8080/FTMetrics/CSI-clients/"); 
 ?>
