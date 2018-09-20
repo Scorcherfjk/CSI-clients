@@ -9,7 +9,7 @@ $telefono = $_POST['tel'];
 $celular = $_POST['cel'];
 $cliente = $_POST['cliente'];
 
-$option = "INSERT INTO contacto (idcliente, nombre,apellido,email,telefono,celular,cliente_idcliente) values('','$nombre','$apellido','$email','$telefono','$celular','$cliente')";
+$option = "INSERT INTO contacto (idcontacto, nombre,apellido,email,telefono,celular,cliente_idcliente) values('','$nombre','$apellido','$email','$telefono','$celular','$cliente')";
 
 $optionready = mysqli_query($conexion,$option);
 mysqli_commit($conexion);

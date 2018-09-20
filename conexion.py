@@ -10,7 +10,7 @@ query = ("SELECT nombre, apellido, email FROM contacto")
 cursor.execute(query)
 
 for (nombre, apellido, email) in cursor:
-    print("{} {} \t y su email es {}".format(nombre, apellido, email))
+    print("{} {} \t\t\t y su email es {}".format(nombre, apellido, email))
 
 cursor.close()
 cnx.close()

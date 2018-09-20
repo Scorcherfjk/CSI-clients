@@ -14,30 +14,30 @@
 <div class="container">
 <!--=======================================INICIO DE LA BARRA DE NAVEGACION==========================-->
     <nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-        <a class="navbar-brand" href="http://localhost:8080/FTMetrics/CSI-clients/"><img src="./img/controlsi.png" alt="logo de ControlSI" style="width:110px; height:50px;"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <a class="navbar-brand" href="./"><img src="./img/controlsi.png" alt="logo de ControlSI" style="width:110px; height:50px;"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="http://localhost:8080/FTMetrics/CSI-clients/">Inicio <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Agregar
-                    </a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            <a class="nav-link" href="./">INICIO<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                AGREGAR
+                </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="http://localhost:8080/FTMetrics/CSI-clients/add_client.html">Cliente</a> 
-                <a class="dropdown-item" href="http://localhost:8080/FTMetrics/CSI-clients/add_contact.php">Contacto</a>
-                <a class="dropdown-item" href="http://localhost:8080/FTMetrics/CSI-clients/add_proyect.php">Proyecto</a>
-                <a class="dropdown-item" href="http://localhost:8080/FTMetrics/CSI-clients/add_resp.html">Responsable</a>
+                <a class="dropdown-item" href="./add_client.html">CLIENTE</a> 
+                <a class="dropdown-item" href="./add_contact.php">CONTACTO</a>
+                <a class="dropdown-item" href="./add_proyect.php">PROYECTO</a>
+                <a class="dropdown-item" href="./add_resp.html">RESPONSABLE</a>
             </div>
-            </li>
-            </ul>
-            <span class="nav-item" style="padding: 10px;"><?php echo("Fecha actual: ".date('Y-m-d')); ?></span>
-        </div>
+        </li>
+        </ul>
+        <span class="nav-item" style="padding: 10px;"><?php echo("FECHA ACTUAL: ".date('Y-m-d')); ?></span>
+    </div>
     </nav>
 <!--=======================================FINAL DE LA BARRA DE NAVEGACION===========================-->
 <!--=======================================LLAMADA A LAS DEPENDENCIAS================================-->
@@ -105,7 +105,7 @@
     ?>
 
 <!--=======================================INICIO DEL FORMULARIO=====================================-->
-    <form action="update.php" method="post">
+    <form action="./update/update.php" method="post">
     <div class="card">
         <div class="card-header h4">
             <a class="navbar-brand" disabled><?php echo $cliente." - ".$oportunidad ?></a>
@@ -182,7 +182,13 @@
             <div class="form-row">
                 <div class="form-group col-md">
                     <label for="inputEmail4">Enviado</label>
-                    <input type="text" class="form-control" name="enviado" id="enviado" value="<?php echo $enviado ?>">
+                    <select id="enviado" name="enviado" class="form-control">
+                        <?php if ($enviado == "0"){
+                        echo "<option value='0' selected>NO</option><option value='1'>SI</option>";
+                        }else{
+                        echo "<option value='0'>NO</option><option value='1' selected>SI</option>";
+                        } ?>
+                    </select>
                 </div>
                 <div class="form-group col-md">
                     <label for="inputPassword4">Cotización</label>

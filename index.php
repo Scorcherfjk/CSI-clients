@@ -22,7 +22,7 @@ $tabla = array();
 <body>
 
 <nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-<a class="navbar-brand" href="http://localhost:8080/FTMetrics/CSI-clients/"><img src="./img/controlsi.png" alt="logo de ControlSI" style="width:110px; height:50px;"></a>
+<a class="navbar-brand" href="./"><img src="./img/controlsi.png" alt="logo de ControlSI" style="width:110px; height:50px;"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -30,22 +30,22 @@ $tabla = array();
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-            <a class="nav-link" href="http://localhost:8080/FTMetrics/CSI-clients/">Inicio <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="./">INICIO<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Agregar
+                AGREGAR
                 </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="http://localhost:8080/FTMetrics/CSI-clients/add_client.html">Cliente</a> 
-                <a class="dropdown-item" href="http://localhost:8080/FTMetrics/CSI-clients/add_contact.php">Contacto</a>
-                <a class="dropdown-item" href="http://localhost:8080/FTMetrics/CSI-clients/add_proyect.php">Proyecto</a>
-                <a class="dropdown-item" href="http://localhost:8080/FTMetrics/CSI-clients/add_resp.html">Responsable</a>
+                <a class="dropdown-item" href="./add_client.html">CLIENTE</a> 
+                <a class="dropdown-item" href="./add_contact.php">CONTACTO</a>
+                <a class="dropdown-item" href="./add_proyect.php">PROYECTO</a>
+                <a class="dropdown-item" href="./add_resp.html">RESPONSABLE</a>
             </div>
         </li>
         </ul>
-        <span class="nav-item" style="padding: 10px;"><?php echo("Fecha actual: ".date('Y-m-d')); ?></span>
-        <a class="btn btn-primary text-light" href="http://localhost:8080/FTMetrics/CSI-clients/seleccion.php">modificar</a>
+        <span class="nav-item" style="padding: 10px;"><?php echo("FECHA ACTUAL: ".date('Y-m-d')); ?></span>
+        <a class="btn btn-primary text-light" href="./seleccion.php">MODIFICAR</a>
     </div>
 
 </nav>
@@ -75,13 +75,12 @@ $consulta = "SELECT fecha.registro as registro ,
             AND fecha.contacto_idcontacto = contacto.idcontacto
             AND fecha.responsable_idresponsable = responsable.idresponsable 
             AND contacto.cliente_idcliente = cliente.idcliente 
-            AND fecha.oferta - curdate() > -1
-            ORDER BY proyecto.idproyecto";
+            ORDER BY proyecto.idproyecto"; //AND fecha.oferta - curdate() > -1
 $resultado = mysqli_query( $conexion, $consulta )
     or die ( "Algo ha ido mal en la consulta a la base de datos");
 ?>
 <br><br><br><br>
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead class="text-center thead-light">
     <tr>
         <th scope="col">Cliente</th>
